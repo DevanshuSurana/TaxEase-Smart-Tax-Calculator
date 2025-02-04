@@ -39,14 +39,20 @@ exports.calculateTax = (req, res) => {
 
   // ✅ New Regime Tax Calculation (No Deductions)
   let newRegimeTax = 0;
-  if (totalIncome > 1200000) {
-    if (totalIncome <= 1500000) {
-      newRegimeTax += (totalIncome - 1200000) * 0.1;
+  if (totalIncome > 700000) {
+    if (totalIncome <= 1000000) {
+      newRegimeTax += (totalIncome - 700000) * 0.1;
+    } else if (totalIncome <= 1500000) {
+      newRegimeTax += 300000 * 0.1 + (totalIncome - 1000000) * 0.15;
     } else if (totalIncome <= 2400000) {
-      newRegimeTax += 300000 * 0.1 + (totalIncome - 1500000) * 0.15;
+      newRegimeTax +=
+        300000 * 0.1 + 500000 * 0.15 + (totalIncome - 1500000) * 0.2;
     } else {
       newRegimeTax +=
-        300000 * 0.1 + 900000 * 0.15 + (totalIncome - 2400000) * 0.3;
+        300000 * 0.1 +
+        500000 * 0.15 +
+        900000 * 0.2 +
+        (totalIncome - 2400000) * 0.3;
     }
   }
 

@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm run start-frontend\" \"npm run start-backend\"",
+    "start-frontend": "cd frontend && npm start",  
+    "start-backend": "cd backend && node server.js",  
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -19,5 +25,8 @@
     "express": "^4.21.2",
     "recharts": "^2.15.1"
   },
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
 }
